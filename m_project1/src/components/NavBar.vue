@@ -2,7 +2,7 @@
   <div class="tab">
     <li v-for="(item,i) in tabItem" :key="i">
       <img :src="item.imgSrc" alt>
-      <router-link :to="{name:item.to}">{{item.text}}</router-link>
+      <router-link :to="{name:item.to}" active-class="active">{{item.text}}</router-link>
     </li>
   </div>
 </template>
@@ -22,7 +22,9 @@ export default {
 </script>
 <style scoped lang="scss">
 $b: 1px dashed red;
-
+.active{
+    color:blue;
+  }
 .tab {
   position: fixed;
   /* // z-index:2; */
@@ -43,6 +45,7 @@ $b: 1px dashed red;
     font-size: 0.2rem;
     line-height: 0.7rem;
     vertical-align: middle;
+    color:blueviolet;
   }
   img {
     width: 0.5rem;

@@ -91,11 +91,14 @@ export default {
 .input-leave-to {
   width: 2.72rem * 1;
 }
-.long{
-   width: 2.72rem * 2;
-   opacity: 1 !important;
-
+.input-enter-to,
+.input-leave {
+  width: 2.72rem * 2;
 }
+// .long{
+//    width: 2.72rem * 2;
+//    opacity: 1 !important;
+// }
 // .normal{
 //    width: 2.72rem * 1;
 // }
