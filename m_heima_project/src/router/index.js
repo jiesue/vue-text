@@ -1,6 +1,6 @@
-import Vue from '../../node_modules/vue/types'
-import Router from '../../node_modules/vue-router/types'
-import HelloWorld from './node_modules/@/components/HelloWorld'
+import Vue from 'vue'
+import Router from 'vue-router'
+import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
