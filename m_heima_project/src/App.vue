@@ -16,7 +16,7 @@
       </router-link>
       <router-link class="mui-tab-item1" to="/cart">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-          <span class="mui-badge">9</span>
+          <span class="mui-badge" id="badge">9</span>
         </span>
         <span class="mui-tab-label">购物车</span>
       </router-link>
@@ -56,6 +56,7 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
   // text-align: center;
   color: #2c3e50;
   padding-top: 0.8rem;
