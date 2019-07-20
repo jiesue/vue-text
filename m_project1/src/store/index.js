@@ -14,6 +14,9 @@ export default new Vuex.Store({
     actions: {
         //常常做异步请求
         setLogin(context,v) {
+            console.log(context);
+            
+            
             context.commit('setLogin',v)
         }
     },
