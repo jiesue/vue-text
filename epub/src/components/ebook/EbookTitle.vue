@@ -1,8 +1,8 @@
 <template>
   <transition name="slide-down">
-    <div class="title-wrapper">
+    <div class="title-wrapper" v-show="1">
       <div class="left">
-        <span class="icon-back"></span>
+        <span class="icon-back" @click="back"></span>
       </div>
       <div class="right">
         <div class="icon-wrapper">
@@ -19,9 +19,31 @@
   </transition>
 </template>
 <script>
-export default {};
+import { mapGetters } from "vuex";
+export default {
+  data() {
+    return {
+      // menuVisible:1
+    };
+  },
+  computed: {
+    ...mapGetters['menuVisible']
+  },
+  mounted(){
+    console.log(this.menuVisible);
+    
+  },
+  methods: {
+    back() {
+      console.log("back");
+      console.log(this.menuVisible);
+      
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
+@import "../../assets/styles/global.scss";
 .title-wrapper {
   position: absolute;
   top: 0;
@@ -29,22 +51,29 @@ export default {};
   z-index: 101;
   display: flex;
   width: 100%;
-  height: px2rem(48);
+  height: px2rem(78);
   background: white;
   box-shadow: 0 px2rem(8) px2rem(8) rgba(0, 0, 0, 0.15);
+  font-size: px2rem(20);
   .left {
     flex: 0 0 px2rem(60);
+    font-size: px2rem(40);
+    margin-left: px2rem(15);
     @include center;
   }
   .right {
     flex: 1;
+    font-size: px2rem(30);
     display: flex;
     justify-content: flex-end;
     .icon-wrapper {
       flex: 0 0 px2rem(40);
       @include center;
       .icon-cart {
-        font-size: px2rem(22);
+        font-size: px2rem(32);
+      }
+      .icon-shelf {
+        font-size: px2rem(32);
       }
     }
   }

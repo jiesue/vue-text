@@ -14,24 +14,26 @@ export default {
   },
   components: {},
   computed: {
-    ...mapGetters(["getFileName"])
+    ...mapGetters(["fileName","menuVisible"])
   },
   methods: {
     prevPage() {
-      if(this.rendition){
+      if (this.rendition) {
         this.rendition.prev();
       }
     },
     nextPage() {
-      if(this.rendition){
-        this.rendition.next()
+      if (this.rendition) {
+        this.rendition.next();
       }
     },
-    showTileMenu() {},
+    toggleTitleAndMenu() {
+      this.$store.dispatch("setMenuVisible", !this.menuVisible);
+    },
     initEpub() {
       const url =
         "https://websave-1253371045.cos.ap-guangzhou.myqcloud.com/epub/" +
-        this.getFileName +
+        this.fileName +
         ".epub";
       this.book = new Epub(url);
       console.log(this.book);
@@ -48,14 +50,14 @@ export default {
       this.rendition.on("touchend", event => {
         let offsetX = event.changedTouches[0].clientX - this.touchStartX;
         let time = event.timeStamp - this.touchTime;
-        if (time < 500 && offsetX > 40) {
-          this.prevPage();
-        } else if (time < 500 && offsetX > -40) {
+        if (time < 500 && offsetX < -40) {
           this.nextPage();
+        } else if (time < 500 && offsetX > 40) {
+          this.prevPage();
         } else {
-          this.showTileMenu();
+          this.toggleTitleAndMenu();
         }
-        event.preventDefault();
+        // event.preventDefault();
         event.stopPropagation();
       });
       console.log(url);
