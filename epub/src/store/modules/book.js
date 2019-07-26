@@ -24,5 +24,8 @@ export default {
             return  commit('setMenuVisible', v)
         }
     },
+    getters: {
+        menuVisible: state => state.menuVisible,
+    }
 
 }

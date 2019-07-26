@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-down">
-    <div class="title-wrapper" v-show="1">
+    <div class="title-wrapper" v-show="menuVisible">
       <div class="left">
         <span class="icon-back" @click="back"></span>
       </div>
@@ -27,10 +27,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters['menuVisible']
+     ...mapGetters(["fileName","menuVisible"])
+  },
+  methods:{
+   
   },
   mounted(){
-    console.log(this.menuVisible);
     
   },
   methods: {

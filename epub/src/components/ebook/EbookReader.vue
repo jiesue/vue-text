@@ -58,7 +58,7 @@ export default {
           this.toggleTitleAndMenu();
         }
         // event.preventDefault();
-        event.stopPropagation();
+        // event.stopPropagation();
       });
       console.log(url);
     }
