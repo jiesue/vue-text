@@ -19,16 +19,16 @@
   </transition>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { ebookMixin } from "../../utils/mixins";
+
 export default {
   data() {
     return {
       // menuVisible:1
     };
   },
-  computed: {
-     ...mapGetters(["fileName","menuVisible"])
-  },
+  mixins:[ebookMixin],
+
   methods:{
    
   },
@@ -72,10 +72,15 @@ export default {
       flex: 0 0 px2rem(40);
       @include center;
       .icon-cart {
-        font-size: px2rem(32);
+        font-size: px2rem(40);
       }
       .icon-shelf {
-        font-size: px2rem(32);
+        font-size: px2rem(40);
+        margin:0 px2rem(20);
+      }
+      .icon-more{
+        font-size: px2rem(40);
+        margin:0 px2rem(20);
       }
     }
   }

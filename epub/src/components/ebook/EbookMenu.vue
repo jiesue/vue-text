@@ -17,35 +17,35 @@
         </div>
       </div>
     </transition>
-    <ebook-setting-font></ebook-setting-font>
+    <!-- <ebook-setting-font></ebook-setting-font>
     <ebook-setting-font-popup></ebook-setting-font-popup>
     <ebook-setting-theme></ebook-setting-theme>
     <ebook-setting-progress></ebook-setting-progress>
     <ebook-slide></ebook-slide>
-    <ebook-speaking-icon></ebook-speaking-icon>
+    <ebook-speaking-icon></ebook-speaking-icon> -->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import EbookSettingFont from './EbookSettingFont'
-  import EbookSettingFontPopup from './EbookSettingFontPopup'
-  import EbookSettingTheme from './EbookSettingTheme'
-  import EbookSettingProgress from './EbookSettingProgress'
-  import EbookSpeakingIcon from './EbookSpeakingIcon'
+  // import EbookSettingFont from './EbookSettingFont'
+  // import EbookSettingFontPopup from './EbookSettingFontPopup'
+  // import EbookSettingTheme from './EbookSettingTheme'
+  // import EbookSettingProgress from './EbookSettingProgress'
+  // import EbookSpeakingIcon from './EbookSpeakingIcon'
 
-  import EbookSlide from './EbookSlide'
-  import { ebookMixin } from '@/utils/mixin'
+  // import EbookSlide from './EbookSlide'
+  import { ebookMixin } from '../../utils/mixins'
 
   export default {
     mixins: [ebookMixin],
-    components: {
-      EbookSettingFontPopup,
-      EbookSlide,
-      EbookSettingProgress,
-      EbookSettingFont,
-      EbookSettingTheme,
-      EbookSpeakingIcon
-    }
+    // components: {
+      // EbookSettingFontPopup,
+      // EbookSlide,
+      // EbookSettingProgress,
+      // EbookSettingFont,
+      // EbookSettingTheme,
+      // EbookSpeakingIcon
+    // }
   }
 </script>
 
@@ -59,9 +59,9 @@
     z-index: 200;
     display: flex;
     width: 100%;
-    height: px2rem(48);
+    height: px2rem(78);
     box-shadow: 0 px2rem(-8) px2rem(8) rgba(0, 0, 0, .15);
-    font-size: px2rem(22);
+    font-size: px2rem(30);
     &.hide-box-shadow {
       box-shadow: none;
     }
