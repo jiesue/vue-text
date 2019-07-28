@@ -1,8 +1,11 @@
 <template>
   <div class="ebook-menu">
     <transition name="slide-up">
-      <div class="menu-wrapper" :class="{'hide-box-shadow': settingVisible >= 0 || !menuVisible}"
-           v-show="menuVisible">
+      <div
+        class="menu-wrapper"
+        :class="{'hide-box-shadow': settingVisible >= 0 || !menuVisible}"
+        v-show="menuVisible"
+      >
         <div class="icon-wrapper" :class="{'selected': settingVisible === 3}">
           <span class="icon-menu" @click="showSetting(3)"></span>
         </div>
@@ -17,63 +20,67 @@
         </div>
       </div>
     </transition>
-    <!-- <ebook-setting-font></ebook-setting-font>
-    <ebook-setting-font-popup></ebook-setting-font-popup>
+    <ebook-setting-font></ebook-setting-font>
+    <!-- <ebook-setting-font-popup></ebook-setting-font-popup>
     <ebook-setting-theme></ebook-setting-theme>
     <ebook-setting-progress></ebook-setting-progress>
     <ebook-slide></ebook-slide>
-    <ebook-speaking-icon></ebook-speaking-icon> -->
+    <ebook-speaking-icon></ebook-speaking-icon>-->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  // import EbookSettingFont from './EbookSettingFont'
-  // import EbookSettingFontPopup from './EbookSettingFontPopup'
-  // import EbookSettingTheme from './EbookSettingTheme'
-  // import EbookSettingProgress from './EbookSettingProgress'
-  // import EbookSpeakingIcon from './EbookSpeakingIcon'
+// import EbookSettingFont from './EbookSettingFont'
+// import EbookSettingFontPopup from './EbookSettingFontPopup'
+// import EbookSettingTheme from './EbookSettingTheme'
+// import EbookSettingProgress from './EbookSettingProgress'
+// import EbookSpeakingIcon from './EbookSpeakingIcon'
 
-  // import EbookSlide from './EbookSlide'
-  import { ebookMixin } from '../../utils/mixins'
+// import EbookSlide from './EbookSlide'
+import { ebookMixin } from "../../utils/mixins";
+import EbookSettingFont from "./EbookSettingFont.vue";
+export default {
+  mixins: [ebookMixin],
 
-  export default {
-    mixins: [ebookMixin],
-    // components: {
-      // EbookSettingFontPopup,
-      // EbookSlide,
-      // EbookSettingProgress,
-      // EbookSettingFont,
-      // EbookSettingTheme,
-      // EbookSpeakingIcon
-    // }
-  }
+  methods: {
+    showSetting(key) {
+      this.settingVisible(key);
+    }
+  },
+  components: [EbookSettingFont],
+  // EbookSettingFontPopup,
+  // EbookSlide,
+  // EbookSettingProgress,
+  // EbookSettingTheme,
+  // EbookSpeakingIcon
+};
 </script>
 
 <style lang="scss" rel="stylesheet/scss" scoped>
-  @import "../../assets/styles/global";
+@import "../../assets/styles/global";
 
-  .menu-wrapper {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 200;
-    display: flex;
-    width: 100%;
-    height: px2rem(78);
-    box-shadow: 0 px2rem(-8) px2rem(8) rgba(0, 0, 0, .15);
-    font-size: px2rem(30);
-    &.hide-box-shadow {
-      box-shadow: none;
+.menu-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 200;
+  display: flex;
+  width: 100%;
+  height: px2rem(78);
+  box-shadow: 0 px2rem(-8) px2rem(8) rgba(0, 0, 0, 0.15);
+  font-size: px2rem(30);
+  &.hide-box-shadow {
+    box-shadow: none;
+  }
+  .icon-wrapper {
+    flex: 1;
+    @include center;
+    .icon-progress {
+      font-size: px2rem(24);
     }
-    .icon-wrapper {
-      flex: 1;
-      @include center;
-      .icon-progress {
-        font-size: px2rem(24);
-      }
-      .icon-A {
-        font-size: px2rem(20);
-      }
+    .icon-A {
+      font-size: px2rem(20);
     }
   }
+}
 </style>

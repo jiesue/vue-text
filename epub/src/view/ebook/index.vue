@@ -8,7 +8,7 @@
 <script>
 import EbookReader from "@/components/ebook/EbookReader";
 import EbookTitle from "@/components/ebook/EbookTitle";
-import EbookMenu from "@/components/ebook/EbookMenu";
+import EbookMenu from "@/components/ebook/EbookMenu.vue";
 
 export default {
   name: "Ebook",

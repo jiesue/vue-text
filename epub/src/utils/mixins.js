@@ -1,6 +1,6 @@
 import { mapGetters } from "vuex";
 export const ebookMixin = {
     computed: {
-        ...mapGetters(['fileName', 'menuVisible'])
+        ...mapGetters(['fileName', 'menuVisible','settingVisible'])
     },
 }
