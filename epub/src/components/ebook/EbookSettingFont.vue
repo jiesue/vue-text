@@ -29,10 +29,20 @@
 </template>
 
 <script>
-import { bookMixin } from "../../utils/mixins";
+import { ebookMixin } from "../../utils/mixins";
+import { fontSizeList } from "../../utils/book";
 export default {
-  mixins: [bookMixin],
-  computed: {}
+  mixins: [ebookMixin],
+  data(){
+    return{
+      fontSizeList:FONT_SIZE_LIST
+    }
+  },
+  methods:{
+    setFontSize(fontSize){
+      
+    }
+  },
 };
 </script>
 <style lang="scss" scoped>

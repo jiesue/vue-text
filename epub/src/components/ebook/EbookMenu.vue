@@ -30,7 +30,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-// import EbookSettingFont from './EbookSettingFont'
+import EbookSettingFont from './EbookSettingFont'
 // import EbookSettingFontPopup from './EbookSettingFontPopup'
 // import EbookSettingTheme from './EbookSettingTheme'
 // import EbookSettingProgress from './EbookSettingProgress'
@@ -38,16 +38,20 @@
 
 // import EbookSlide from './EbookSlide'
 import { ebookMixin } from "../../utils/mixins";
-import EbookSettingFont from "./EbookSettingFont.vue";
+import { log } from 'util';
+// import EbookSettingFont from "@/components/ebook/EbookSettingFont";
 export default {
+  components: { EbookSettingFont },
+
   mixins: [ebookMixin],
 
   methods: {
     showSetting(key) {
-      this.settingVisible(key);
+      console.log(key);
+      
+     this.$store.dispatch('settingVisible',key)
     }
-  },
-  components: [EbookSettingFont],
+  }
   // EbookSettingFontPopup,
   // EbookSlide,
   // EbookSettingProgress,
