@@ -35,7 +35,7 @@ export default {
   mixins: [ebookMixin],
   data(){
     return{
-      fontSizeList:FONT_SIZE_LIST
+      fontSizeList:fontSizeList
     }
   },
   methods:{
