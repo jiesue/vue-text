@@ -2,7 +2,7 @@
   <div class="home">
     <nav-home></nav-home>
     <ul class="con-list">
-      <slide tag="li"></slide>
+      <slide tag="li" :imgSrc="imgSrc"></slide>
     </ul>
   </div>
 </template>
@@ -11,7 +11,9 @@ import NavHome from "@/components/home/NavHome.vue";
 import Slide from "@/components/home/Slide.vue";
 export default {
   data() {
-      return{}
+      return{
+        imgSrc:'',
+      }
   },
   components: { NavHome, Slide }
 };
@@ -20,6 +22,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/style/global.scss";
 .home {
+  position: relative;
   width: 100%;
   height: 100%;
   padding-bottom: 0.97rem;
@@ -27,6 +30,7 @@ export default {
   .con-list {
     width: 100%;
     height: 100%;
+    // z-index:11;
     // border: 0.01rem solid greenyellow;
   }
 }
