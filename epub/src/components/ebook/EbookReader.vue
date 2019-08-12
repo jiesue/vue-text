@@ -30,6 +30,11 @@ export default {
     toggleTitleAndMenu() {
       this.$store.dispatch("setMenuVisible", !this.menuVisible);
     },
+    hideTitleAndMenu(){
+       this.$store.dispatch("setMenuVisible", false);
+       console.log('1111');
+       
+    },
     initEpub() {
       const url =
         "https://websave-1253371045.cos.ap-guangzhou.myqcloud.com/epub/" +
@@ -52,8 +57,10 @@ export default {
         let time = event.timeStamp - this.touchTime;
         if (time < 500 && offsetX < -40) {
           this.nextPage();
+          this.hideTitleAndMenu()
         } else if (time < 500 && offsetX > 40) {
           this.prevPage();
+          this.hideTitleAndMenu()
         } else {
           this.toggleTitleAndMenu();
         }
