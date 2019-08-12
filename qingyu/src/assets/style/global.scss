@@ -1,0 +1,5 @@
+@import './reset';
+$b:1px solid red;
+@function b($color){
+    @return 1px dashed $color;
+}
