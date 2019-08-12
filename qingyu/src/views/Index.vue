@@ -10,7 +10,10 @@
 import TabBar from "@/components/TabBar.vue";
 
 export default {
-  name: "index",
+  name: "Index",
+  data(){
+    return{}
+  },
   components: {
     TabBar
   }

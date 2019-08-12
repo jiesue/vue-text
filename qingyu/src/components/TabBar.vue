@@ -29,25 +29,26 @@ export default {
 @import "../assets/style/global";
 #tabbar {
   position: absolute;
+  z-index: 10;
   display: flex;
   justify-content: space-around;
   align-items: center;
   bottom: 0;
   width: 100%;
-  height: 97px;
-  line-height: 97px;
+  height: 0.97rem;
+  line-height: 0.97rem;
   background: #000;
   li {
-    width: 80px;
-    height: 60px;
-    line-height: 60px;
+    width: 0.80rem;
+    height: 0.60rem;
+    line-height: 0.60rem;
     text-align: center;
     &.item1 {
       span {
         display: inline-block;
         vertical-align: middle;
-        width: 47px;
-        height: 47px;
+        width: 0.47rem;
+        height: 0.47rem;
         background: url(../assets/img/nav_home.png) 0/100% no-repeat;
       }
       &.active span {
@@ -58,8 +59,8 @@ export default {
       span {
         display: inline-block;
         vertical-align: middle;
-        width: 45px;
-        height: 45px;
+        width: 0.45rem;
+        height: 0.45rem;
         background: url(../assets/img/nav_xiaoxi.png) 0/100% no-repeat;
       }
       &.active span {
@@ -70,8 +71,8 @@ export default {
       span {
         display: inline-block;
         vertical-align: middle;
-        width: 57px;
-        height: 57px;
+        width: 0.57rem;
+        height: 0.57rem;
         background: url(../assets/img/nav_bei.png) 0/100% no-repeat;
       }
       &.active span {
@@ -82,8 +83,8 @@ export default {
       span {
         display: inline-block;
         vertical-align: middle;
-        width: 40px;
-        height: 51px;
+        width: 0.40rem;
+        height: 0.51rem;
         background: url(../assets/img/nav_me.png) 0/100% no-repeat;
       }
       &.active span {
