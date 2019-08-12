@@ -4,18 +4,17 @@
   </div>
 </template>
 <script>
+import { ebookMixin } from "../../utils/mixins";
 import Epub from "epubjs";
 global.epub = Epub;
-import { mapGetters } from "vuex";
 export default {
   name: "EbookReader",
+  mixins: [ebookMixin],
   data() {
     return {};
   },
   components: {},
-  computed: {
-    ...mapGetters(["fileName","menuVisible"])
-  },
+  computed: {},
   methods: {
     prevPage() {
       if (this.rendition) {
@@ -31,9 +30,13 @@ export default {
       this.$store.dispatch("setMenuVisible", !this.menuVisible);
     },
     hideTitleAndMenu(){
+<<<<<<< HEAD
        this.$store.dispatch("setMenuVisible", false);
        console.log('1111');
        
+=======
+      this.$store.dispatch("setMenuVisible", 0);
+>>>>>>> 22c67160f4a90fe50752c41a519ead484507b4dd
     },
     initEpub() {
       const url =
@@ -60,12 +63,16 @@ export default {
           this.hideTitleAndMenu()
         } else if (time < 500 && offsetX > 40) {
           this.prevPage();
+<<<<<<< HEAD
           this.hideTitleAndMenu()
+=======
+          this.hideTitleAndMenu();
+>>>>>>> 22c67160f4a90fe50752c41a519ead484507b4dd
         } else {
           this.toggleTitleAndMenu();
         }
-        // event.preventDefault();
-        // event.stopPropagation();
+        event.preventDefault();
+        event.stopPropagation();
       });
       console.log(url);
     }
