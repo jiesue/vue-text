@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <router-view></router-view>
-    <TabBar msg="Welcome to Your Vue.js App" />
+    <TabBar />
   </div>
 </template>
 
