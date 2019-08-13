@@ -79,21 +79,12 @@ export default {
   position: absolute;
   bottom: 0;
   left: 0;
-<<<<<<< HEAD
-  z-index: 400;
-=======
   z-index: 200;
->>>>>>> 22c67160f4a90fe50752c41a519ead484507b4dd
   display: flex;
   width: 100%;
   height: px2rem(78);
   box-shadow: 0 px2rem(-8) px2rem(8) rgba(0, 0, 0, 0.15);
-<<<<<<< HEAD
-  font-size: px2rem(22);
-  background: rgb(243, 239, 239);
-=======
   font-size: px2rem(30);
->>>>>>> 22c67160f4a90fe50752c41a519ead484507b4dd
   &.hide-box-shadow {
     box-shadow: none;
   }

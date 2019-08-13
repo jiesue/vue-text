@@ -63,11 +63,7 @@ export default {
           this.hideTitleAndMenu()
         } else if (time < 500 && offsetX > 40) {
           this.prevPage();
-<<<<<<< HEAD
-          this.hideTitleAndMenu()
-=======
           this.hideTitleAndMenu();
->>>>>>> 22c67160f4a90fe50752c41a519ead484507b4dd
         } else {
           this.toggleTitleAndMenu();
         }
