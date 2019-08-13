@@ -1,8 +1,8 @@
 <template>
-  <div class="slide">
+  <div class="slide" ref="slide">
     <black-bg :cssText="bg1"></black-bg>
     <div class="img-w">
-      <img src="@/assets/img/1.jpg" alt />
+      <img :src="imgSrc" alt />
     </div>
     <detail-show :imgSrc="imgSrc"></detail-show>
     <black-bg :cssText="bg2"></black-bg>
@@ -18,11 +18,16 @@ export default {
       bg1:
         "height:2.30rem; background:linear-gradient(to top,rgba(0,0,0,0),rgba(0,0,0,0.5));opacity:0.7;top:0;",
       bg2:
-        "height:2.94rem; background:linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.5));opacity:0.7;",
-    
+        "height:2.94rem; background:linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.5));opacity:0.7;bottom:0"
     };
   },
-  components: { BlackBg, DetailShow }
+  components: { BlackBg, DetailShow },
+  mounted() {
+    this.$nextTick(() => {
+      this.$refs.slide.style.height = this.$store.getters.itemH;
+      console.log(this.$store.getters.itemH);
+    });
+  }
 };
 </script>
 
@@ -39,7 +44,7 @@ export default {
     img {
       width: 100%;
       height: 100%;
-      border:1px solid red;
+      //   border:1px solid red;
     }
   }
 }

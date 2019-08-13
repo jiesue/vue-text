@@ -1,24 +1,36 @@
 <template>
   <div class="top">
     <ul class="nav">
-      <router-link tag="li" class="active" :to="{path:'/login'}">
-        <span class="text">附近</span>
+      <li
+        v-for="(item,i) of tabCons"
+        :key="i"
+        :class="{'active':i===a_index}"
+        @click="changeTab(i)"
+      >
+        <span class="text">{{item}}</span>
         <span class="icon-dotted"></span>
-      </router-link>
-      <router-link tag="li" :to="{path:'/login'}">
-        <span class="text">活跃</span>
-        <span class="icon-dotted"></span>
-      </router-link>
-      <router-link tag="li" :to="{path:'/login'}">
-        <span class="text">新人</span>
-        <span class="icon-dotted"></span>
-      </router-link>
+      </li>
     </ul>
     <div class="more"></div>
   </div>
 </template>
 <script>
-export default {};
+import { mapActions } from "vuex";
+export default {
+  data() {
+    return {
+      tabCons: ["附近", "活跃", "新人"],
+      a_index: 0
+    };
+  },
+  methods: {
+    ...mapActions(["showUserIndex"]),
+    changeTab(i) {
+      this.a_index = i;
+      this.showUserIndex(i);
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -66,7 +78,7 @@ export default {};
         left: 0.54rem;
         width: 0.2rem;
         height: 0.24rem;
-        background: url(../../assets/img/nav_dian.png) 0/100% no-repeat;
+        background: url(~@/assets/img/nav_dian.png) 0/100% no-repeat;
       }
     }
   }
@@ -76,7 +88,7 @@ export default {};
     right: 0.32rem;
     width: 0.55rem;
     height: 0.4rem;
-    background: url(../../assets/img/nav_more.png) 0/100% no-repeat;
+    background: url(~@/assets/img/nav_more.png) 0/100% no-repeat;
   }
 }
 </style>

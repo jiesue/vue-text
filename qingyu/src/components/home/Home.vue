@@ -1,21 +1,51 @@
 <template>
   <div class="home">
     <nav-home></nav-home>
-    <ul class="con-list">
-      <slide tag="li" :imgSrc="imgSrc"></slide>
-    </ul>
+    <div class="tab-w" ref="tab_w">
+      <div class="con-list" ref="conList">
+       
+      </div>
+      <div class="con-list">
+       
+      </div>
+      <div class="con-list">
+      
+      </div>
+    </div>
   </div>
 </template>
 <script>
 import NavHome from "@/components/home/NavHome.vue";
-import Slide from "@/components/home/Slide.vue";
+import { mapGetters } from "vuex";
+import { parse } from "path";
+
 export default {
   data() {
-      return{
-        imgSrc:'',
-      }
+    return {
+      imgSrc: require("@/assets/img/1.jpg"),
+    };
   },
-  components: { NavHome, Slide }
+  components: { NavHome, Slide },
+  computed: {
+    ...mapGetters(["showUserIndex", "index1", "index2", "index3"])
+  },
+ 
+
+  mounted() {
+    let h = window.getComputedStyle(this.$refs.conList).height;
+    // console.log(h);
+    this.$store.dispatch("itemH", h);
+  },
+  watch: {
+    showUserIndex(newV, oldV) {
+      this.$refs.tab_w.style.transform = `translate(${-33.333 *
+        this.showUserIndex}%, 0)`;
+    },
+    translateY(v) {
+      //   console.log(v);
+      this.$refs.slide_w.style.transform = `translateY(${v}px)`;
+    }
+  }
 };
 </script>
 
@@ -27,11 +57,19 @@ export default {
   height: 100%;
   padding-bottom: 0.97rem;
   //   border: $b;
-  .con-list {
-    width: 100%;
+  .tab-w {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 300%;
     height: 100%;
-    // z-index:11;
-    // border: 0.01rem solid greenyellow;
+    transition: 0.3s linear;
+    .con-list {
+      width: 33.33333%;
+      height: 100%;
+      overflow: hidden;
+      //   border: $b;
+      
+    }
   }
 }
 </style>
