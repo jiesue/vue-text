@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     showUserIndex: 0,
+    popupTarget: '',
     itemH: null,
     index0: 0,
     index1: 0,
@@ -17,6 +18,9 @@ export default new Vuex.Store({
   mutations: {
     showUserIndex(state, v) {
       state.showUserIndex = v;
+    },
+    popupTarget(state, v) { 
+      state.popupTarget = v;
     },
     itemH(state, v) {
       state.itemH = v;
@@ -50,6 +54,9 @@ export default new Vuex.Store({
     showUserIndex(context, v) {
       return context.commit('showUserIndex', v)
     },
+    popupTarget(context, v) {
+      return context.commit('popupTarget', v)
+    },
     itemH(context, v) {
       return context.commit('itemH', v)
     },
@@ -74,6 +81,9 @@ export default new Vuex.Store({
   getters: {
     showUserIndex(state) {
       return state.showUserIndex;
+    },
+    popupTarget(state) {
+      return state.popupTarget;
     },
     itemH(state) {
       return state.itemH;
