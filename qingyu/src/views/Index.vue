@@ -1,9 +1,9 @@
 <template>
-  <div class="index">
-    <router-view></router-view>
-    <Msg/>
-    <TabBar />
-  </div>
+    <div class="index">
+        <router-view></router-view>
+        <Msg />
+        <TabBar />
+    </div>
 </template>
 
 <script>
@@ -12,20 +12,24 @@ import TabBar from "@/components/TabBar.vue";
 import Msg from "@/components/Msg.vue";
 
 export default {
-  name: "Index",
-  data(){
-    return{}
-  },
-  components: {TabBar,Msg}
+    name: "Index",
+    data() {
+        return {};
+    },
+    components: { TabBar, Msg },
+    computed: {
+      
+    },
+    
 };
 </script>
 
 <style lang="scss" >
 @import "../assets/style/global";
 .index {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: #fff;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #fff;
 }
 </style>

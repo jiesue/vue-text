@@ -1,8 +1,8 @@
 <template>
-    <div class="popup" style="display: none">
-        <div class="wrapper" @click="checkClose">
-            <transition name="seleted">
-                <div class="seleted" style="display: none">
+    <div class="popup" ref="popup" :class="{'active':this.popupTarget!=''}">
+        <div class="wrapper" @click="checkClose" ref="wrapper">
+            <transition name="selected">
+                <div :class="{'selected':true,'active':this.popupTarget=='selected'}" ref="seleted">
                     <div class="close" onclick="closePop()"></div>
                 </div>
             </transition>
@@ -10,35 +10,32 @@
     </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
     methods: {
         checkClose(event) {
-            if (event.target === this) {
+            if (event.target === this.$refs.wrapper) {
                 closePop();
             }
         },
-        showPop(param) {
-            $(".popup .wrapper>div").hide();
-            switch (param) {
-                case "rule":
-                    $(".popup")
-                        .show()
-                        .find(".rule")
-                        .show();
-                    break;
-                default:
-                    break;
-            }
-        },
+        showPop(param) {},
         closePop() {
             $(".popup").hide();
         }
+    },
+    computed: {
+        ...mapGetters(["popupTarget"])
+    },
+    watch: {
+        popupTarget() {}
     }
 };
 </script>
 <style lang="scss" scoped>
 @import "../assets/style/global.scss";
 .popup {
+    display: none;
     position: fixed;
     z-index: 20;
     top: 0;
@@ -46,6 +43,9 @@ export default {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
+    &.active {
+        display: block;
+    }
     .wrapper {
         position: absolute;
         top: 0;
@@ -55,11 +55,19 @@ export default {
         align-items: center;
         width: 100%;
         height: 100%;
-        .seleted {
+        & > div {
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+        .selected {
             position: absolute;
-            bottom: -100%;
+        //    bottom: -100%;
             width: 100%;
-            height: auto;
+
+            height: 3rem;
+            background: #f40;
             // background: url(../images/rule.png) 0/100% 100% no-repeat;
         }
     }

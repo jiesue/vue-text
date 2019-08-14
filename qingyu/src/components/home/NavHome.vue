@@ -11,11 +11,12 @@
         <span class="icon-dotted"></span>
       </li>
     </ul>
-    <div class="more"></div>
+    <div class="more" @click="more"></div>
   </div>
 </template>
 <script>
 import { mapActions } from "vuex";
+import { log } from 'util';
 export default {
   data() {
     return {
@@ -24,10 +25,14 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["showUserIndex"]),
+    ...mapActions(["showUserIndex","popupTarget"]),
     changeTab(i) {
       this.a_index = i;
       this.showUserIndex(i);
+    },
+    more(){
+      console.log(23423);
+      this.popupTarget('selected');
     }
   }
 };
