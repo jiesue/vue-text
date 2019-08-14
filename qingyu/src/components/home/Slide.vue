@@ -2,9 +2,9 @@
   <div class="slide" ref="slide">
     <black-bg :cssText="bg1"></black-bg>
     <div class="img-w">
-      <img :src="imgSrc" alt />
+      <img ref="img" :src="data.imgSrc" alt />
     </div>
-    <detail-show :imgSrc="imgSrc"></detail-show>
+    <detail-show :info="data"></detail-show>
     <black-bg :cssText="bg2"></black-bg>
   </div>
 </template>
@@ -12,7 +12,7 @@
 import BlackBg from "@/components/home/BlackBg.vue";
 import DetailShow from "@/components/home/DetailShow.vue";
 export default {
-  props: ["imgSrc"],
+  props: ["data"],
   data() {
     return {
       bg1:
@@ -22,10 +22,11 @@ export default {
     };
   },
   components: { BlackBg, DetailShow },
+  created() {},
   mounted() {
     this.$nextTick(() => {
-      this.$refs.slide.style.height = this.$store.getters.itemH;
-      console.log(this.$store.getters.itemH);
+      var itemH = this.$store.getters.itemH;
+      this.$refs.slide.style.height = itemH;
     });
   }
 };
@@ -37,13 +38,20 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
+  line-height: 100%;
   //   padding-bottom: 0.97rem;
   .img-w {
+      display: flex;
+     align-items: center;
+
     width: 100%;
     height: 100%;
     img {
+      display: inline-block;
       width: 100%;
-      height: 100%;
+
+        // margin-top:-1rem;
+      //   height: 100%;
       //   border:1px solid red;
     }
   }

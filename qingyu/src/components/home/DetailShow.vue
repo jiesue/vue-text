@@ -2,15 +2,15 @@
   <div class="show">
     <div class="online-tips">
       <span class="icon"></span>
-      <span class="text">7小时前在线</span>
+      <span class="text">{{info.status}}</span>
     </div>
     <div class="avatar-w">
-      <img src="~@/assets/img/tx.png" alt />
+      <img :src="info.avatar" alt />
     </div>
-    <p class="nick">7小时前在线</p>
+    <p class="nick">{{info.nick}}</p>
     <p class="user-info">
-      <span>21岁</span>
-      <span>广州市</span>
+      <span>{{info.age}}</span>
+      <span>{{info.city}}</span>
       <span>天秤座</span>
     </p>
     <p class="make-friend"></p>
@@ -19,6 +19,7 @@
 </template>
 <script>
 export default {
+  props:['info'],
   data() {
     return {
       isPlay: false
@@ -26,6 +27,7 @@ export default {
   },
   methods: {
     changePlay() {
+      alert(1)
       this.isPlay = !this.isPlay;
     }
   }

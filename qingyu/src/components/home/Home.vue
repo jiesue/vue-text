@@ -10,9 +10,9 @@
       </div>
       <div class="con-list">
         <slide-wrap></slide-wrap>
-      </div> -->
-      <div class="con-list" v-for="(item,i) in 3" :key="i">
-         <slide-wrap :tabIndex="i"></slide-wrap>
+      </div>-->
+      <div class="con-list" v-for="(item,i) in 3" :key="i" ref="conList">
+        <slide-wrap :tabIndex="i"></slide-wrap>
       </div>
     </div>
   </div>
@@ -21,7 +21,6 @@
 import NavHome from "@/components/home/NavHome.vue";
 import SlideWrap from "@/components/home/SlideWrap.vue";
 import { mapGetters } from "vuex";
-import { parse } from "path";
 
 export default {
   data() {
@@ -33,17 +32,16 @@ export default {
   },
 
   mounted() {
-    let h = window.getComputedStyle(this.$refs.conList).height;
+    let h = window.getComputedStyle(this.$refs.conList[0]).height;
     // console.log(h);
     this.$store.dispatch("itemH", h);
   },
- watch: {
-        showUserIndex(newV, oldV) {
-            this.$refs.tab_w.style.transform = `translate(${-33.333 *
-                this.showUserIndex}%, 0)`;
-        },
-       
+  watch: {
+    showUserIndex(newV, oldV) {
+      this.$refs.tab_w.style.transform = `translate(${-33.333 *
+        this.showUserIndex}%, 0)`;
     }
+  }
 };
 </script>
 
