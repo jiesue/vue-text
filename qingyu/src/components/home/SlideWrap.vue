@@ -2,7 +2,7 @@
   <ul
     class="slide-w"
     @touchstart="touchstart"
-    @touchmove="touchmove"
+    @touchmove.prevent="touchmove"
     @touchend="touchend"
     ref="slide_w"
   >
@@ -43,7 +43,7 @@ export default {
       this.$refs.slide_w.style.transition = "0s";
     },
     touchmove(event) {
-          event.preventDefault();
+          // event.preventDefault();
       let t = event.targetTouches[0];
       let disY = t.pageY - this.moveY;
       //   console.log(this.translateY, disY);

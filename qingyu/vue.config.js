@@ -13,9 +13,11 @@ module.exports = {
     lintOnSave: true,
 
 
-    chainWebpack: () => { },
+    chainWebpack: () => {
+        config.resolve.symlinks(true);
+    },
 
-    configureWebpack: () => { },
+    configureWebpack: () => {},
 
     // vue-loader 配置项
 
@@ -28,7 +30,7 @@ module.exports = {
     productionSourceMap: true,
 
     // css相关配置
-
+    runtimeCompiler: true,
     css: {
 
         // 是否使用css分离插件 ExtractTextPlugin
@@ -82,7 +84,7 @@ module.exports = {
 
         proxy: null, // 设置代理
 
-        before: app => { }
+        before: app => {}
 
     },
     // 第三方插件配置

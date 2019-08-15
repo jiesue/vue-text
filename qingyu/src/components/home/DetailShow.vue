@@ -13,7 +13,7 @@
       <span>{{info.city}}</span>
       <span>天秤座</span>
     </p>
-    <p class="make-friend"></p>
+    <p class="make-friend" @click="makeFriend"></p>
     <p :class="{'btn':true,'play':isPlay}" @click="changePlay"></p>
   </div>
 </template>
@@ -27,8 +27,11 @@ export default {
   },
   methods: {
     changePlay() {
-      alert(1)
+
       this.isPlay = !this.isPlay;
+    },
+    makeFriend(){
+      this.$toast({message:'好友请求已发送',background:'#E1A75E linear-gradient(0deg,rgba(247,183,64,0.26),rgba(255,219,110,0.26))'})
     }
   }
 };
@@ -41,6 +44,7 @@ export default {
   bottom: 0;
   width: 100%;
   height: 3rem;
+  z-index:3;
   // border: $b;
 
   .online-tips {

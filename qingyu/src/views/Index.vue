@@ -3,6 +3,7 @@
         <router-view></router-view>
         <Msg />
         <TabBar />
+        <PopUp />
     </div>
 </template>
 
@@ -10,26 +11,26 @@
 // @ is an alias to /src
 import TabBar from "@/components/TabBar.vue";
 import Msg from "@/components/Msg.vue";
+import PopUp from "@/components/PopUp.vue";
 
 export default {
     name: "Index",
     data() {
         return {};
     },
-    components: { TabBar, Msg },
-    computed: {
-      
-    },
-    
+    mounted() {},
+    components: { TabBar, Msg, PopUp },
+    computed: {}
 };
 </script>
 
 <style lang="scss" >
 @import "../assets/style/global";
 .index {
+    -webkit-overflow-scrolling: touch;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: scroll;
     background: #fff;
 }
 </style>
