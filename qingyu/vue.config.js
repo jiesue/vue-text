@@ -1,3 +1,8 @@
+const path = require("path");
+
+function resolve(dir) {
+    return path.join(__dirname, dir);
+}
 module.exports = {
 
     // 基本路径
@@ -13,8 +18,13 @@ module.exports = {
     lintOnSave: true,
 
 
-    chainWebpack: () => {
+    chainWebpack: (config) => {
         config.resolve.symlinks(true);
+        config.resolve.alias
+            .set('@', resolve('src'))
+            .set('@assets', resolve('src/assets'))
+            // 这里只写了两个个，你可以自己再加，按这种格式.set('', resolve(''))
+
     },
 
     configureWebpack: () => {},
@@ -35,7 +45,7 @@ module.exports = {
 
         // 是否使用css分离插件 ExtractTextPlugin
 
-        extract: true,
+        extract: ['production', 'test'].includes(process.env.NODE_ENV),
 
         // 开启 CSS source maps?
 
@@ -73,20 +83,21 @@ module.exports = {
     devServer: {
 
         open: process.platform === 'darwin',
-
         host: '0.0.0.0',
-
         port: 8080,
-
         https: false,
-
         hotOnly: false,
-
-        proxy: null, // 设置代理
-
-        before: app => {}
+        before: app => {},
+        proxy: {
+            'https://cdn.mom1.cn': { // search为转发路径
+                target: 'https://cdn.mom1.cn', // 目标地址
+                ws: true, // 是否代理websockets
+                changeOrigin: false // 设置同源  默认false，是否需要改变原始主机头为目标URL,               
+            }
+        }
 
     },
+
     // 第三方插件配置
     pluginOptions: {
 
