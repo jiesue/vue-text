@@ -122,7 +122,7 @@ export default {
                 padding-bottom: 0.97rem;
             }
             .chatlist {
-                overflow: hidden;
+                overflow: scroll;
                 -webkit-overflow-scrolling: touch;
                 .item {
                     display: flex;

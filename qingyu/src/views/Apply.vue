@@ -50,9 +50,22 @@ export default {
             this.applers = res.data.data;
         });
     },
-    methods:{
-        back(){
-            this.$router.back()
+    mounted() {
+        // 检测浏览器路由改变页面不刷新问题,hash模式的工作原理是hashchange事件
+        window.addEventListener(
+            "hashchange",
+            () => {
+                let currentPath = window.location.hash.slice(1);
+                if (this.$route.path !== currentPath) {
+                    this.$router.push(currentPath);
+                }
+            },
+            false
+        );
+    },
+    methods: {
+        back() {
+            this.$router.back();
             // this.$router.go(-1);//返回上一层
         }
     }
@@ -102,7 +115,7 @@ export default {
         height: 100%;
         box-sizing: border-box;
         overflow: auto;
-        padding-bottom:0.8rem;
+        padding-bottom: 0.8rem;
 
         .item {
             width: 7.2rem;
@@ -237,7 +250,7 @@ export default {
                     background: rgba(255, 255, 255, 0);
                     opacity: 0.8;
                     border-radius: 0.08rem;
-                    border:1px solid rgba(225,167,94,1);
+                    border: 1px solid rgba(225, 167, 94, 1);
                     font-size: 0.28rem;
                     font-family: PingFang-SC-Medium;
                     font-weight: 500;

@@ -8,7 +8,7 @@ import Message from './components/message/Message'
 
 Vue.use(Router)
 
-export default new Router({
+let route = new Router({
     // mode: 'history',
     base: process.env.BASE_URL,
     // 配置router active的类名
@@ -17,23 +17,26 @@ export default new Router({
     linkExactActiveClass: 'active',
     routes: [{
         path: '/',
+        redirect: '/login',
+    }, {
+        path: '/index',
         name: 'Index',
-        redirect: '/home',
+        redirect: '/index/home',
         component: Index,
         children: [{
-            path: '/home',
+            path: 'home',
             name: 'Home',
             component: Home,
         }, {
-            path: '/message',
+            path: 'message',
             name: 'Message',
             component: Message,
         }, {
-            path: '/club',
+            path: 'club',
             name: 'Club',
             component: Club,
         }, {
-            path: '/me',
+            path: 'me',
             name: 'Me',
             component: Me,
         }
@@ -62,7 +65,7 @@ export default new Router({
 })
 
 route.beforeEach((to, from, next) => {
-    // console.log(to);
+    console.log(to.path.slice(1));
     // console.log(from);
 
     if (to.matched.some(item => !item.meta.disNeedLogin)) {
@@ -70,19 +73,21 @@ route.beforeEach((to, from, next) => {
         //  store是原来存储组件状态的，不是用来做本地数据存储的。
         // 本地存储可以用localStorage/sessionStorage或者cookie。
         // 你可以把它看做是一个js的缓存数据,所以刷新页面后下面语句会报错
-        console.log(route.app.$store);
 
-        // let info = route.app.$store.getters.userPhone;
-        // if (info) {
-        //     next()
-        // } else {
-        //     route.push({
-        //         path: '/login',
-        //         query: {
-        //             redirect: to.path.slice(1)
-        //         }
-        //     });
-        // }
+        let info = route.app.$store.getters.userPhone;
+        if (info) {
+            next()
+        } else {
+            route.push({
+                path: '/login',
+                query: {
+                    redirect: to.path.slice(1)
+                }
+            });
+        }
+
+
+
     } else {
         next()
     }

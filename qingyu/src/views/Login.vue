@@ -11,13 +11,13 @@
         <div class="register" v-show="show=='register'">register</div>
         <div class="login" v-show="show=='login'">
             <p>
-                <input type="number" placeholder="输入手机号" />
+                <input v-model="inputPhone" type="number" placeholder="输入手机号" />
             </p>
             <p>
                 <input type="password" placeholder="请输入密码" />
             </p>
             <p class="btn-w">
-                <span>登录</span>
+                <span @click="submit">登录</span>
             </p>
         </div>
     </div>
@@ -26,15 +26,19 @@
 export default {
     data() {
         return {
-            show: "select"
+            show: "select",
+            inputPhone: ""
         };
     },
     methods: {
         change(v) {
             this.show = v;
-            // if(this.show == 'login'){
-            //   this.$router.push({path:'/'});
-            // }
+        },
+        submit() {
+            if (this.inputPhone.length !== 0) {
+                this.$store.dispatch("userPhone", this.inputPhone);
+                this.$router.push({path:'/'});
+            }
         }
     }
 };
