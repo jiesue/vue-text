@@ -8,7 +8,7 @@ import Message from './components/message/Message'
 
 Vue.use(Router)
 
-export default new Router({
+let route = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     // 配置router active的类名
@@ -16,44 +16,77 @@ export default new Router({
     linkActiveClass: '',
     linkExactActiveClass: 'active',
     routes: [{
-            path: '/',
-            name: 'Index',
-            redirect: '/home',
-            component: Index,
-            children: [{
-                    path: '/home',
-                    name: 'Home',
-                    component: Home,
-                }, {
-                    path: '/message',
-                    name: 'Message',
-                    component: Message,
-                }, {
-                    path: '/club',
-                    name: 'Club',
-                    component: Club,
-                }, {
-                    path: '/me',
-                    name: 'Me',
-                    component: Me,
-                }
-
-            ]
-        },
-        {
-            path: '/login',
-            name: 'Login',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () =>
-                import ( /* webpackChunkName: "about" */ './views/Login.vue')
-        },
-        {
-            path: '/apply',
-            name: 'Apply',
-            component: () =>
-                import ('./views/Apply.vue'),
+        path: '/',
+        name: 'Index',
+        redirect: '/home',
+        component: Index,
+        children: [{
+            path: '/home',
+            name: 'Home',
+            component: Home,
+        }, {
+            path: '/message',
+            name: 'Message',
+            component: Message,
+        }, {
+            path: '/club',
+            name: 'Club',
+            component: Club,
+        }, {
+            path: '/me',
+            name: 'Me',
+            component: Me,
         }
+
+        ]
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import( /* webpackChunkName: "about" */ './views/Login.vue'),
+        meta: {
+            disNeedLogin: true
+        }
+    },
+    {
+        path: '/apply',
+        name: 'Apply',
+        component: () =>
+            import('./views/Apply.vue'),
+    }
     ]
 })
+
+route.beforeEach((to, from, next) => {
+    // console.log(to);
+    // console.log(from);
+
+    if (to.matched.some(item => !item.meta.disNeedLogin)) {
+
+        //  store是原来存储组件状态的，不是用来做本地数据存储的。
+        // 本地存储可以用localStorage/sessionStorage或者cookie。
+        // 你可以把它看做是一个js的缓存数据,所以刷新页面后下面语句会报错
+        console.log(route.app.$store);
+
+        // let info = route.app.$store.getters.userPhone;
+        // if (info) {
+        //     next()
+        // } else {
+        //     route.push({
+        //         path: '/login',
+        //         query: {
+        //             redirect: to.path.slice(1)
+        //         }
+        //     });
+        // }
+    } else {
+        next()
+    }
+
+})
+
+export default route;

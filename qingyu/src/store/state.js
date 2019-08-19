@@ -1,4 +1,5 @@
 let state = {
+    userPhone: null,
     showUserIndex: 0,
     popupTarget: '',
     itemH: null,

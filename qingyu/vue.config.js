@@ -4,7 +4,6 @@ function resolve(dir) {
     return path.join(__dirname, dir);
 }
 module.exports = {
-
     // 基本路径
 
     publicPath: './',
@@ -12,11 +11,6 @@ module.exports = {
     // 输出文件目录
 
     outputDir: 'dist',
-
-    // eslint-loader 是否在保存的时候检查
-
-    lintOnSave: true,
-
 
     chainWebpack: (config) => {
         config.resolve.symlinks(true);
@@ -41,6 +35,7 @@ module.exports = {
 
     // css相关配置
     runtimeCompiler: true,
+
     css: {
 
         // 是否使用css分离插件 ExtractTextPlugin
@@ -104,5 +99,6 @@ module.exports = {
         // ...
 
     }
-
 }
+
+//before enter enter after enter before leave leave after leave
