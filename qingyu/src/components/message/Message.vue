@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="friendlist">
-                    <div class="apply">
+                    <div class="apply" @click="openApply">
                         <span class="icon-haoyou"></span>
                         <span class="text">我的好友请求</span>
                         <span class="applynum">09</span>
@@ -79,6 +79,9 @@ export default {
         },
         touchend(event) {
             event.currentTarget.style.background = "#fff";
+        },
+        openApply(){
+            this.$router.push({name:'Apply'})
         }
     },
     watch: {
@@ -95,6 +98,7 @@ export default {
     width: 100%;
     height: 100%;
     // background: #eee;
+    overflow: hidden;
     -webkit-overflow-scrolling: touch;
 
     .show-area {
@@ -118,7 +122,7 @@ export default {
                 padding-bottom: 0.97rem;
             }
             .chatlist {
-                overflow: scroll;
+                overflow: hidden;
                 -webkit-overflow-scrolling: touch;
                 .item {
                     display: flex;
@@ -218,7 +222,7 @@ export default {
             }
             .friendlist {
                 position: relative;
-                  overflow: scroll;
+                  overflow: hidden;
                   height: 100%;
                   padding-bottom: 0.97rem;
                 -webkit-overflow-scrolling: touch;

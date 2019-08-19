@@ -2,7 +2,7 @@
     <div class="apply">
         <div class="topbar">
             <p class="title">biaoti</p>
-            <div class="back-w">
+            <div class="back-w" @click="back">
                 <span class="icon-b"></span>
             </div>
         </div>
@@ -49,6 +49,12 @@ export default {
         this.axios("/api/msgList").then(res => {
             this.applers = res.data.data;
         });
+    },
+    methods:{
+        back(){
+            this.$router.back()
+            // this.$router.go(-1);//返回上一层
+        }
     }
 };
 </script>
@@ -59,6 +65,7 @@ export default {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    -webkit-overflow-scrolling: touch;
     .topbar {
         position: fiexd;
         top: 0;

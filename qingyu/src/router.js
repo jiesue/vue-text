@@ -9,7 +9,7 @@ import Message from './components/message/Message'
 Vue.use(Router)
 
 export default new Router({
-    mode: 'history',
+    // mode: 'history',
     base: process.env.BASE_URL,
     // 配置router active的类名
     // 每个router都会经过/所以会被激活，通过exact可以精准选择所在路由
