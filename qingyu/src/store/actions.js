@@ -27,7 +27,10 @@
      },
      msgShowIndex({ commit }, v) {
          return commit('msgShowIndex', v)
-     }
+     },
+     userPhone({ commit }, v) {
+         return commit('userPhone', v)
+     },
  }
 
  export default actions;

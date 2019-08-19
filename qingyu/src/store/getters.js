@@ -21,6 +21,7 @@ let getters = {
     len1: state => state.len1,
     len2: state => state.len2,
     msgShowIndex: state => state.msgShowIndex,
+    userPhone: state => state.userPhone,
 }
 
 export default getters;

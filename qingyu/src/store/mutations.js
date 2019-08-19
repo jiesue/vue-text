@@ -34,6 +34,9 @@ let mutations = {
     },
     msgShowIndex(state, v) {
         state.msgShowIndex = v;
+    },
+    userPhone(state, v) {
+        state.userPhone = v;
     }
 }
 
