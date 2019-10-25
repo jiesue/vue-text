@@ -37,7 +37,9 @@ export default {
         submit() {
             if (this.inputPhone.length !== 0) {
                 this.$store.dispatch("userPhone", this.inputPhone);
-                this.$router.push({path:'/'});
+                this.$router.push({path:'/index'})
+            }else{
+                console.log(123)
             }
         }
     }

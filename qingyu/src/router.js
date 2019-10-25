@@ -6,6 +6,14 @@ import Club from './components/club/Club'
 import Me from './components/me/Me'
 import Message from './components/message/Message'
 
+
+
+// const originalPush = Router.prototype.push
+// Router.prototype.push = function push(location, onResolve, onReject) {
+//     if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+//     return originalPush.call(this, location).catch(err => err)
+// }
+
 Vue.use(Router)
 
 let route = new Router({
@@ -16,51 +24,55 @@ let route = new Router({
     linkActiveClass: '',
     linkExactActiveClass: 'active',
     routes: [{
-        path: '/',
-        redirect: '/login',
-    }, {
-        path: '/index',
-        name: 'Index',
-        redirect: '/index/home',
-        component: Index,
-        children: [{
-            path: 'home',
-            name: 'Home',
-            component: Home,
-        }, {
-            path: 'message',
-            name: 'Message',
-            component: Message,
-        }, {
-            path: 'club',
-            name: 'Club',
-            component: Club,
-        }, {
-            path: 'me',
-            name: 'Me',
-            component: Me,
-        }
+            path: '/',
+            redirect: '/login',
+        },
+        {
+            path: '/index',
+            name: 'Index',
+            redirect: '/index/home',
+            component: Index,
+            children: [{
+                    path: 'home',
+                    name: 'Home',
+                    component: Home,
+                },
+                {
+                    path: 'message',
+                    name: 'Message',
+                    component: Message,
+                },
+                {
+                    path: 'club',
+                    name: 'Club',
+                    component: Club,
+                },
+                {
+                    path: 'me',
+                    name: 'Me',
+                    component: Me,
+                }
 
-        ]
-    },
-    {
-        path: '/login',
-        name: 'Login',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () =>
-            import( /* webpackChunkName: "about" */ './views/Login.vue'),
-        meta: {
-            disNeedLogin: true
+            ]
+        },
+        {
+            path: '/login',
+            name: 'Login',
+            // route level code-splitting
+            // this generates a separate chunk (about.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () =>
+                import ( /* webpackChunkName: "about" */ './views/Login.vue'),
+            meta: {
+                disNeedLogin: true
+            }
+        },
+        {
+            path: '/apply',
+            name: 'Apply',
+            component: () =>
+                import ('./views/Apply.vue'),
         }
-    },
-    {
-        path: '/apply',
-        name: 'Apply',
-        component: () =>
-            import('./views/Apply.vue'),
-    }
     ]
 })
 
